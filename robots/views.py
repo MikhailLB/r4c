@@ -1,6 +1,5 @@
 import json
 from datetime import datetime
-
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .services import create_robot, get_weekly_data
@@ -10,7 +9,7 @@ from .utils import generate_excel
 @csrf_exempt
 def robot_processing(request):
 
-    """ Представление обработки JSON """
+    """ Представление для обработки JSON """
 
     if request.method == 'POST':
         try:
@@ -33,7 +32,7 @@ def robot_processing(request):
 
 def export_robot_summary_data(request):
 
-    """Экспортирует Excel-файл со сводкой производства за последнюю неделю."""
+    """Экспорт Excel файла со сводкой производства за последнюю неделю """
 
     weekly_summary = get_weekly_data()
     excel_file = generate_excel(weekly_summary)
